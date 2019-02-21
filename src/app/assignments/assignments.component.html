@@ -1,0 +1,13 @@
+<form ngForm #assignmentsForm>
+  <button mat-stroked-button color="primary">Add Assignment</button>
+</form>
+<div *ngFor="let assignment of assignments">
+  <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
+    {{assignment.name}} was submitted on {{assignment.subDate}}
+  </p>
+  <ng-template #unsubmitted>
+    Assignment {{assignment.name}} has not beed submitted
+  </ng-template>
+</div>
+
+
