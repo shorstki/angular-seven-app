@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
+import {AssignmentsService} from './shared/assignments.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
     MatCardModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [AssignmentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

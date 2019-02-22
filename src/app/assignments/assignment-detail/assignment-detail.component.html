@@ -1,11 +1,14 @@
 <div class="container" *ngIf="passedAssignment">
-  <mat-card>
+  <mat-card class="assignment-detail">
     <mat-card-title>
       {{ passedAssignment.name }}
     </mat-card-title>
     <mat-card-subtitle>
       {{ passedAssignment.dueDate | date }}
     </mat-card-subtitle>
-    <mat-checkbox (click)="onAssignmentSubmitted()">Submitted</mat-checkbox>
+    <div class="assignment-detail-bottom">
+      <mat-checkbox (click)="onAssignmentSubmitted()">Submitted</mat-checkbox>
+      <button mat-flat-button color="warn" (click)="onDelete()">DELETE</button>
+    </div>
   </mat-card>
 </div>
