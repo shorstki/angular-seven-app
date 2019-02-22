@@ -1,13 +1,20 @@
-<form ngForm #assignmentsForm>
-  <button mat-stroked-button color="primary">Add Assignment</button>
-</form>
-<div *ngFor="let assignment of assignments">
-  <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
-    {{assignment.name}} was submitted on {{assignment.subDate}}
-  </p>
-  <ng-template #unsubmitted>
-    Assignment {{assignment.name}} has not beed submitted
-  </ng-template>
-</div>
+<main class="container" *ngIf="!formVisible">
+  <button class="addBtn" mat-button (click)="onAddButtonClick()">Add an assignment</button>
+  <mat-list *ngFor="let assignment of assignments">
+    <mat-list-item (click)="setSelected(assignment)">
+      <h3 mat-subheader>{{ assignment.dueDate | date}}</h3>
+      <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
+        {{assignment.name}} was submitted on {{assignment.subDate}}
+      </p>
+      <ng-template #unsubmitted>
+        Assignment {{assignment.name}} has not beed submitted
+      </ng-template>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+
+  </mat-list>
+</main>
+<app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail>
+<app-add-assignment *ngIf="formVisible" (newAssignment)="onNewAssignment($event)"></app-add-assignment>
 
 

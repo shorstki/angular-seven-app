@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Assignment } from './assignments.model';
 
 @Component({
   selector: 'app-assignments',
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignmentsComponent implements OnInit {
 
-  assignments = [
+  selectedAssignment: Assignment;
+  formVisible = false;
+
+  assignments: Assignment[] = [
     {
       name: 'One',
-      subDate: '2018-02-04',
+      dueDate: new Date('2020-02-04'),
       submitted: true
     },
     {
       name: 'Two',
-      subDate: '2019-01-92',
+      dueDate: new Date('2019-01-02'),
       submitted: false
     }
 
@@ -24,6 +28,20 @@ export class AssignmentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setSelected(assignment: Assignment) {
+    this.selectedAssignment = assignment;
+  }
+
+  onAddButtonClick() {
+    this.formVisible = true;
+    this.selectedAssignment = null;
+  }
+
+  onNewAssignment(assignment: Assignment) {
+    this.assignments.push(assignment);
+    this.formVisible = false;
   }
 
 }

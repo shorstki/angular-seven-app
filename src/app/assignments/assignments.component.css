@@ -1,6 +1,8 @@
-.submitted {
-  color: green;
+.container {
+  display: flex;
+  flex-direction: column;
 }
-.unsubmitted {
-  color: red;
+
+.addBtn {
+  align-self: flex-end;
 }
